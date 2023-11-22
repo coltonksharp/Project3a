@@ -115,7 +115,6 @@ def generate_chart(symbol, chart_type, time_series, start_end, symbols):
     chart.add('low', low_values)
     chart.add('close', close_values)
 
-    # Save the chart to a file (static/bar_chart.svg)
     chart_path = 'static/{}_chart.svg'.format(symbol.lower())
     chart.render_to_file(chart_path)
 
@@ -139,7 +138,6 @@ def home():
         time_series = get_time_series(request)
         start_end = get_dates(request)
 
-        # Call your existing function to generate the chart
         chart_path = generate_chart(symbol, chart_type, time_series, start_end, symbols)
 
         return render_template('index.html', symbols=symbols, chart_path=chart_path)
